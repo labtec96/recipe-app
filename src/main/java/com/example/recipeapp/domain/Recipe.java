@@ -1,6 +1,7 @@
 package com.example.recipeapp.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by ch on 2020-02-26
@@ -20,6 +21,9 @@ public class Recipe {
     private String directions;
     //todo add
     //private Difficulty difficulty;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
 
     @Lob
     private Byte[] image;
