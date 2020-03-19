@@ -2,15 +2,20 @@ package com.example.recipeapp.controllers;
 
 import com.example.recipeapp.services.ImageService;
 import com.example.recipeapp.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by ch on 2020-03-18
  */
+@Slf4j
+@Controller
 public class ImageController {
     private final ImageService imageService;
     private final RecipeService recipeService;
@@ -27,6 +32,7 @@ public class ImageController {
         return "recipe/imageuploadform";
     }
 
+    @PostMapping("recipe/{id}/image")
     public String handleImagePost(@PathVariable String id, @RequestParam("imagefile")MultipartFile file){
 
         imageService.saveImageFile(Long.valueOf(id), file);
