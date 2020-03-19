@@ -10,7 +10,8 @@ import java.util.Set;
  */
 
 
-
+@Getter
+@Setter
 @EqualsAndHashCode(exclude = "recipes")
 @Entity
 public class Category {
